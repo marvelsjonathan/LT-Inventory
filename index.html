@@ -104,6 +104,7 @@ try{S=JSON.parse(localStorage.getItem(K))}catch(x){S=null}
 if(!S||!Array.isArray(S.items)){try{const b=JSON.parse(localStorage.getItem(BK));if(b&&Array.isArray(b.items)){S=b;restoredFromBackup=true}}catch(x){}}
 if(!S||!Array.isArray(S.items))S=seed();
 S.exp=S.exp||[];S.sales=S.sales||[];S.imps=S.imps||[];S.alias=S.alias||{};S.rvers=S.rvers||[];S.cch=S.cch||[];S.moves=Array.isArray(S.moves)?S.moves:[];
+S.log=Array.isArray(S.log)?S.log:[];
 S.log.forEach((l,i)=>{if(!l.id)l.id="o"+i+"_"+l.t});
 let invCfg=(()=>{try{return JSON.parse(localStorage.getItem("cakeinv_shared_sync")||"{}")}catch(x){return{}}})(),invReady=false,invBusy=false,invTimer=0,invTag=null,invBase="",invStatus="Not connected.",authToken="",authRefreshToken="",authExpires=0,authUser=null,invUsers={};
 const invFp=()=>JSON.stringify(S);
